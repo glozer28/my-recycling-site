@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Тест по переработке</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; background-color: #e0f7fa; }
+    img { max-width: 300px; margin: 0 auto 20px; display: block; }
+    .option {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 200px;
+      background: #eee;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .option:hover {
+      background: #ddd;
+    }
+    .correct {
+      background-color: #4CAF50 !important;
+      color: white;
+      cursor: default;
+    }
+    .incorrect {
+      background-color: #f44336 !important;
+      color: white;
+      cursor: default;
+    }
+    #result {
+      font-weight: bold;
+      font-size: 20px;
+      margin-top: 20px;
+      min-height: 24px;
+    }
+    #next-btn, #back-btn {
+      margin-top: 20px;
+      padding: 8px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+    }
+    #next-btn:hover, #back-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Угадай материал</h1>
+  <img id="quiz-image" src="" alt="Вопрос">
+  <div id="options"></div>
+  <div id="result"></div>
+  <button id="next-btn">Далее</button>
+  <a href="index.html"><button id="back-btn">Назад на главную</button></a>
+
+  <script>
+    const questions = [
+      {
+        image: 'images/zigi.png',
+        options: ['Металл', 'Пластик 1', 'Стекло', 'Пластик 3'],
+        correct: 'Металл'
+      },
+      {
+        image: 'images/banka.png',
+        options: ['Пластик 7', 'Пластик 6', 'Стекло', 'Бумага'],
+        correct: 'Стекло'
+      },
+      {
+        image: 'images/ice.WEBP',
+        options: ['Пластик 5', 'Пластик 3', 'Пластик 2', 'Пластик 4'],
+        correct: 'Пластик 3'
+      },
+      {
+        image: 'images/pape.png',
+        options: ['Пластик 1', 'Бумага', 'Пластик 4', 'Стекло'],
+        correct: 'Бумага'
+      },
+      {
+        image: 'images/cddisk.png',
+        options: ['Пластик 7', 'Бумага', 'Пластик 6', 'Пластик 2'],
+        correct: 'Пластик 7'
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    const img = document.getElementById('quiz-image');
+    const optionsDiv = document.getElementById('options');
+    const resultDiv = document.getElementById('result');
+    const nextBtn = document.getElementById('next-btn');
+    const backBtn = document.getElementById('back-btn');
+
+    function showQuestion() {
+      const q = questions[current];
+      img.src = q.image;
+      img.style.display = 'block';
+      optionsDiv.innerHTML = '';
+      resultDiv.textContent = '';
+      nextBtn.style.display = 'none';
+      backBtn.style.display = 'none';
+
+      q.options.forEach(option => {
+        const btn = document.createElement('div');
+        btn.className = 'option';
+        btn.textContent = option;
+        btn.onclick = () => selectOption(btn, option, q.correct);
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    function selectOption(selectedBtn, selectedOption, correctOption) {
+      const allOptions = optionsDiv.querySelectorAll('.option');
+      allOptions.forEach(btn => btn.onclick = null);
+
+      if (selectedOption === correctOption) {
+        selectedBtn.classList.add('correct');
+        resultDiv.textContent = 'Правильно!';
+        score++;
+      } else {
+        selectedBtn.classList.add('incorrect');
+        resultDiv.textContent = `Неправильно! Правильный ответ: ${correctOption}`;
+        allOptions.forEach(btn => {
+          if (btn.textContent === correctOption) btn.classList.add('correct');
+        });
+      }
+
+      nextBtn.style.display = 'inline-block';
+    }
+
+    nextBtn.onclick = () => {
+      current++;
+      if (current < questions.length) {
+        showQuestion();
+      } else {
+        img.style.display = 'none';
+        optionsDiv.innerHTML = '';
+        resultDiv.textContent = `Ты ответил правильно на ${score} из ${questions.length} вопросов.`;
+        nextBtn.style.display = 'none';
+        backBtn.style.display = 'inline-block';
+      }
+    };
+
+    showQuestion();
+  </script>
+</body>
+</html>

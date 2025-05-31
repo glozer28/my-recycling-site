@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Sort & Recycle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>♻ Sort & Recycle</h1>
+        <p>Куда выбрасывать? Нажми на категорию!</p>
+    </header>
+
+    <div class="categories">
+        <!-- Каждая категория с логикой показа/скрытия -->
+        <div class="category" onclick="toggle(this)">
+            <h2>Plastic #1 (PET)</h2>
+            <img src="images/plastic1.png" alt="PET">
+            <p class="description hidden">Этот пластик используется для бутылок из-под воды и газировки. Он легко перерабатывается и часто применяется повторно.</p>
+        </div>
+
+        <div class="category" onclick="toggle(this)">
+            <h2>Plastic #2 (HDPE)</h2>
+            <img src="images/plastic2.PNG" alt="HDPE">
+            <p class="description hidden">Прочный и устойчивый к химии пластик, из которого делают бутылки для шампуня, пакеты и канистры. Один из самых безопасных видов для переработки</p>
+        </div>
+
+        <div class="category" onclick="toggle(this)">
+            <h2>Plastic #3 (PVC)</h2>
+            <img src="images/plastic3.PNG" alt="PVC">
+            <p class="description hidden">Используется в трубах, строительных материалах и обивке. Сложен в переработке и может выделять токсичные вещества при сжигании.</p>
+        </div>
+
+        <div class="category" onclick="toggle(this)">
+            <h2>Plastic #4 (LDPE)</h2>
+            <img src="images/plastic4.PNG" alt="LDPE">
+            <p class="description hidden">Применяется в мягких упаковках, полиэтиленовых пакетах и пищевой плёнке. Перерабатывается редко, но считается сравнительно безопасным.</p>
+        </div>
+
+        <div class="category" onclick="toggle(this)">
+            <h2>Plastic #5 (PP)</h2>
+            <img src="images/plastic5.PNG" alt="PP">
+            <p class="description hidden">Этот пластик устойчив к высоким температурам и часто используется в контейнерах для еды и крышках. Легко поддаётся повторной переработке.</p>
+        </div>
+
+        <div class="category" onclick="toggle(this)">
+            <h2>Plastic #6 (PS)</h2>
+            <img src="images/plastic6.PNG" alt="PS">
+            <p class="description hidden">Используется в одноразовой посуде, стаканах и упаковке. Может быть опасен при нагревании, плохо разлагается и редко перерабатывается.</p>
+        </div>
+
+        <div class="category" onclick="toggle(this)">
+            <h2>Plastic #7 (Other)</h2>
+            <img src="images/plastic7.PNG" alt="Other Plastics">
+            <p class="description hidden">Это смесь разных пластиков, которые трудно переработать. Часто используется в бутылках для спортпита, очках, CD-дисках и т.д.</p>
+        </div>
+
+        <div class="category" onclick="toggle(this)">
+            <h2>Metal</h2>
+            <img src="images/metal.PNG" alt="Metal">
+            <p class="description hidden">Металл легко перерабатывается и может использоваться бесконечное число раз без потери качества. На переработку обычно идут алюминиевые банки, консервные банки и фольга</p>
+        </div>
+
+        <div class="category" onclick="toggle(this)">
+            <h2>Glass</h2>
+            <img src="images/glass.PNG" alt="Glass">
+            <p class="description hidden">Стекло можно перерабатывать бесконечно без потери прочности или прозрачности. Бутылки, банки и другие стеклянные изделия — самые частые объекты переработки</p>
+        </div>
+
+        <div class="category" onclick="toggle(this)">
+            <h2>Paper</h2>
+            <img src="images/paper.PNG" alt="Paper">
+            <p class="description hidden">
+                Бумагу можно перерабатывать 5–7 раз, прежде чем волокна станут слишком короткими. 
+                Газеты, картон и офисная бумага — самые распространённые материалы в переработке.
+            </p>
+            <a href="test.html" class="test-button">ТЕСТ</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>©️ 2025 Sort & Recycle — Всё о переработке</p>
+    </footer>
+
+    <script>
+        function toggle(element) {
+            const img = element.querySelector('img');
+            const desc = element.querySelector('.description');
+            img.classList.toggle('hidden');
+            desc.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

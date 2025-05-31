@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #e0f7fa;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.category {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 160px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.category:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.category img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: white;
+    margin-bottom: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.category h2 {
+    font-size: 18px;
+    margin: 5px 0;
+    color: #2e7d32;
+}
+
+.category p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 👇 Скрывает элемент */
+.hidden {
+    display: none;
+}
+
+/* 📱 Адаптивность для маленьких экранов */
+@media (max-width: 500px) {
+    .category {
+        width: 100%;
+    }
+}
+
+.test-button {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px; /* ← Сдвиг вправо */
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.test-button:hover {
+    background-color: #45a049;
+}
